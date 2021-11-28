@@ -96,54 +96,52 @@ const Repositories = ({ user, repos }) => {
   }
 
   return (
-    <>
-      <div className="repos-wrapper">
-        <div className="repos-header">
-          Repositories<span className="repos-count">{user.public_repos}</span>
-        </div>
-        {user &&
-          repos &&
-          repos.map((repo) => (
-            <div key={repo.id} className="repository-wrapper">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href={`https://github.com/${user.login}/${repo.name}`}
-              >
-                <h2 className="repository-name">{repo.name}</h2>
-              </a>
-              <p className="repository-description">{repo.description}</p>
-              <p className="repository-language">
-                {repo.language}
-                <span className="repository-updated-at">
-                  {formatDistance(new Date(repo.updated_at), new Date(), {
-                    addSuffix: true,
-                  })}
-                </span>
-              </p>
-            </div>
-          ))}
-        <div className="repository-pagination">
-          <Link href={`/users/${user.login}?page=${Number(page) - 1}`}>
-            <a>
-              <button type="button" disabled={page && page === '1'}>
-                Previous
-              </button>
+    <div className="repos-wrapper">
+      <div className="repos-header">
+        Repositories<span className="repos-count">{user.public_repos}</span>
+      </div>
+      {user &&
+        repos &&
+        repos.map((repo) => (
+          <div key={repo.id} className="repository-wrapper">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://github.com/${user.login}/${repo.name}`}
+            >
+              <h2 className="repository-name">{repo.name}</h2>
             </a>
-          </Link>
-          <Link
-            href={`/users/${user.login}?page=${!page ? '2' : Number(page) + 1}`}
-          >
-            <a>
-              <button type="button" disabled={repos.length < 10}>
-                Next
-              </button>
-            </a>
-          </Link>
-        </div>
+            <p className="repository-description">{repo.description}</p>
+            <p className="repository-language">
+              {repo.language}
+              <span className="repository-updated-at">
+                {formatDistance(new Date(repo.updated_at), new Date(), {
+                  addSuffix: true,
+                })}
+              </span>
+            </p>
+          </div>
+        ))}
+      <div className="repository-pagination">
+        <Link href={`/users/${user.login}?page=${Number(page) - 1}`}>
+          <a>
+            <button type="button" disabled={page && page === '1'}>
+              Previous
+            </button>
+          </a>
+        </Link>
+        <Link
+          href={`/users/${user.login}?page=${!page ? '2' : Number(page) + 1}`}
+        >
+          <a>
+            <button type="button" disabled={repos.length < 10}>
+              Next
+            </button>
+          </a>
+        </Link>
       </div>
       <style jsx>{style}</style>
-    </>
+    </div>
   );
 };
 

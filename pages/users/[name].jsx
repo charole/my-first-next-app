@@ -18,13 +18,11 @@ const Name = ({ user, repos }) => {
     return null;
   }
   return (
-    <>
-      <div className="user-contents-wrapper">
-        <Profile user={user} />
-        <Repositories user={user} repos={repos} />
-      </div>
+    <div className="user-contents-wrapper">
+      <Profile user={user} />
+      <Repositories user={user} repos={repos} />
       <style jsx>{style}</style>
-    </>
+    </div>
   );
 };
 
