@@ -6,7 +6,7 @@ import formatDistance from 'date-fns/formatDistance';
 const style = css`
   .repos-wrapper {
     width: 100%;
-    height: calc(100vh - 40px);
+    /* height: calc(100vh - 40px); */
     overflow: auto;
     padding: 0px 16px;
   }
